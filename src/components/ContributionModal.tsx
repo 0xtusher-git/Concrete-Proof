@@ -8,6 +8,7 @@ import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import Image from "next/image";
 import { supabase } from "@/lib/supabase";
+import { isVideoUrl } from "./ContributionCard";
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -142,7 +143,7 @@ export function ContributionModal({
 
           {/* Left Side: Media Gallery */}
           <div className="w-full md:w-3/5 bg-black relative flex items-center justify-center group h-64 md:h-auto min-h-[300px]">
-            {contribution.media_urls?.[currentMediaIndex]?.toLowerCase().endsWith('.mp4') ? (
+            {isVideoUrl(contribution.media_urls?.[currentMediaIndex]) ? (
               <video
                 src={contribution.media_urls[currentMediaIndex]}
                 className="w-full h-full object-contain max-h-[90vh]"

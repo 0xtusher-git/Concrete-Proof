@@ -30,6 +30,17 @@ function formatTimeAgo(dateString: string) {
   return `${days}d ago`;
 }
 
+export function isVideoUrl(url?: string) {
+  if (!url) return false;
+  try {
+    const pathname = new URL(url).pathname.toLowerCase();
+    return pathname.endsWith('.mp4') || pathname.endsWith('.webm') || pathname.endsWith('.ogg') || pathname.endsWith('.mov') || pathname.endsWith('.mkv') || pathname.endsWith('.m4v');
+  } catch {
+    const lowerUrl = url.toLowerCase();
+    return lowerUrl.includes('.mp4') || lowerUrl.includes('.webm') || lowerUrl.includes('.ogg') || lowerUrl.includes('.mov') || lowerUrl.includes('.mkv') || lowerUrl.includes('.m4v');
+  }
+}
+
 export function ContributionCard({
   contribution,
   index,
@@ -96,7 +107,7 @@ export function ContributionCard({
     >
       {/* Image/Video Section */}
       <div className="relative aspect-video w-full overflow-hidden bg-black/40">
-        {contribution.media_urls?.[0]?.toLowerCase().endsWith('.mp4') ? (
+        {isVideoUrl(contribution.media_urls?.[0]) ? (
           <video
             src={contribution.media_urls[0]}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
