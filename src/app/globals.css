@@ -1,26 +1,71 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #ffffff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-concrete-black: #0a0a0a;
+  --color-concrete-dark: #111111;
+  --color-concrete-darker: #141414;
+  --color-concrete-yellow: #FFD100;
+  --color-concrete-gold: #B89A00;
+  --color-concrete-muted: #AAAAAA;
+  --font-sans: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  --font-sora: var(--font-sora);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    @apply font-sans antialiased selection:bg-concrete-yellow selection:text-black;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .glass-panel {
+    @apply bg-white/[0.05] backdrop-blur-[20px] border border-concrete-yellow/[0.15] rounded-[20px] transition-all duration-300;
+  }
+
+  .glass-panel-hover {
+    @apply hover:shadow-[0_8px_32px_rgba(255,209,0,0.12)] hover:border-concrete-yellow/[0.3] hover:-translate-y-1;
+  }
+
+  .glass-input {
+    @apply bg-white/[0.03] backdrop-blur-[10px] border border-white/10 rounded-xl px-4 py-3 text-white placeholder-concrete-muted focus:outline-none focus:border-concrete-yellow focus:ring-1 focus:ring-concrete-yellow transition-all duration-200;
+  }
+
+  .glass-button {
+    @apply bg-concrete-yellow text-black font-bold rounded-xl px-6 py-3 transition-all duration-200 hover:shadow-[0_0_20px_rgba(255,209,0,0.4)] hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
+  }
+  
+  .glass-pill {
+    @apply bg-white/[0.05] backdrop-blur-md border border-white/10 rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200 hover:bg-white/10;
+  }
+  
+  .glass-pill-active {
+    @apply bg-concrete-yellow/20 border-concrete-yellow/50 text-concrete-yellow;
+  }
+}
+
+/* Custom scrollbar for webkit */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4a4a4a;
 }
