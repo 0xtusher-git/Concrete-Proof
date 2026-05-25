@@ -1,7 +1,13 @@
+"use client";
+
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, LayoutDashboard } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export function Navbar() {
+  const pathname = usePathname();
+  const isSubmitPage = pathname === "/submit";
+
   return (
     <nav className="w-full border-b border-white/5 bg-black/50 backdrop-blur-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
@@ -21,15 +27,27 @@ export function Navbar() {
           </div>
         </Link>
 
-        <Link
-          href="/submit"
-          className="glass-panel px-5 py-2.5 flex items-center gap-2 hover:bg-concrete-yellow/10 hover:border-concrete-yellow/40 transition-all group"
-        >
-          <span className="text-white font-medium text-sm group-hover:text-concrete-yellow transition-colors">
-            Submit Your Proof
-          </span>
-          <ArrowRight className="w-4 h-4 text-concrete-yellow group-hover:translate-x-1 transition-transform" />
-        </Link>
+        {isSubmitPage ? (
+          <Link
+            href="/"
+            className="glass-panel px-5 py-2.5 flex items-center gap-2 hover:bg-concrete-yellow/10 hover:border-concrete-yellow/40 transition-all group"
+          >
+            <LayoutDashboard className="w-4 h-4 text-concrete-yellow" />
+            <span className="text-white font-medium text-sm group-hover:text-concrete-yellow transition-colors">
+              Dashboard
+            </span>
+          </Link>
+        ) : (
+          <Link
+            href="/submit"
+            className="glass-panel px-5 py-2.5 flex items-center gap-2 hover:bg-concrete-yellow/10 hover:border-concrete-yellow/40 transition-all group"
+          >
+            <span className="text-white font-medium text-sm group-hover:text-concrete-yellow transition-colors">
+              Submit Your Proof
+            </span>
+            <ArrowRight className="w-4 h-4 text-concrete-yellow group-hover:translate-x-1 transition-transform" />
+          </Link>
+        )}
       </div>
     </nav>
   );
