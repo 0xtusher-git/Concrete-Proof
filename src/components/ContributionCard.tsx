@@ -153,13 +153,15 @@ export function ContributionCard({
 
       {/* Content Section */}
       <div className="p-5 flex flex-col flex-grow">
-        <div className="flex items-center gap-2 mb-3">
-          <span className="text-white font-bold text-base truncate">
-            {contribution.discord_name}
-          </span>
-          <span className="text-concrete-yellow text-sm truncate">
-            {contribution.x_handle}
-          </span>
+        <div className="flex flex-col gap-1 mb-3">
+          <div className="flex items-center gap-2 overflow-hidden">
+            <span className="text-[10px] text-white/40 uppercase font-bold tracking-wider shrink-0">Discord:</span>
+            <span className="text-white font-bold text-sm truncate">{contribution.discord_name}</span>
+          </div>
+          <div className="flex items-center gap-2 overflow-hidden">
+            <span className="text-[10px] text-white/40 uppercase font-bold tracking-wider shrink-0">X (Twitter):</span>
+            <span className="text-concrete-yellow text-xs font-medium truncate">{contribution.x_handle}</span>
+          </div>
         </div>
 
         <p

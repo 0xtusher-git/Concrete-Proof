@@ -200,14 +200,21 @@ export function ContributionModal({
             
             {/* Header info */}
             <div className="flex items-start justify-between gap-4 mb-6">
-              <div>
-                <h3 className="text-xl font-bold text-white mb-1">
-                  {contribution.discord_name}
-                </h3>
-                <div className="flex flex-col gap-1">
-                  <span className="text-white/50 text-sm">
+              <div className="flex flex-col gap-3">
+                <div>
+                  <span className="text-xs text-white/40 uppercase tracking-wider font-semibold block mb-1">Discord Name</span>
+                  <h3 className="text-xl font-bold text-white leading-tight">
+                    {contribution.discord_name}
+                  </h3>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-white/40 uppercase tracking-wider font-semibold">Discord Username:</span>
+                  <span className="text-white/70 text-sm font-medium">
                     {contribution.discord_username}
                   </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-white/40 uppercase tracking-wider font-semibold">X (Twitter):</span>
                   <a 
                     href={`https://x.com/${contribution.x_handle.replace('@', '')}`}
                     target="_blank"
