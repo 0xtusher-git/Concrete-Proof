@@ -162,6 +162,12 @@ export function ContributionCard({
             <span className="text-[10px] text-white/40 uppercase font-bold tracking-wider shrink-0">X (Twitter):</span>
             <span className="text-concrete-yellow text-xs font-medium truncate">{contribution.x_handle}</span>
           </div>
+          {contribution.discord_level != null && (
+            <div className="flex items-center gap-2 overflow-hidden mt-0.5">
+              <span className="text-[10px] text-white/40 uppercase font-bold tracking-wider shrink-0">Server Level:</span>
+              <span className="text-white/80 text-xs font-bold bg-white/10 px-1.5 py-0.5 rounded">{contribution.discord_level}</span>
+            </div>
+          )}
         </div>
 
         <p

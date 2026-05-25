@@ -213,6 +213,14 @@ export function ContributionModal({
                     {contribution.discord_username}
                   </span>
                 </div>
+                {contribution.discord_level != null && (
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-white/40 uppercase tracking-wider font-semibold">Server Level:</span>
+                    <span className="text-white font-bold bg-white/10 px-2 py-0.5 rounded text-sm">
+                      {contribution.discord_level}
+                    </span>
+                  </div>
+                )}
                 <div className="flex items-center gap-2">
                   <span className="text-xs text-white/40 uppercase tracking-wider font-semibold">X (Twitter):</span>
                   <a 

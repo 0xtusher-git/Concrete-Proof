@@ -3,6 +3,7 @@ export type Contribution = {
   discord_name: string;
   discord_username: string;
   x_handle: string;
+  discord_level?: number;
   contribution_types: string[];
   description: string;
   media_urls: string[];

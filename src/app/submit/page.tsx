@@ -31,6 +31,7 @@ export default function SubmitPage() {
   const [discordName, setDiscordName] = useState("");
   const [discordUsername, setDiscordUsername] = useState("");
   const [xHandle, setXHandle] = useState("");
+  const [discordLevel, setDiscordLevel] = useState("");
   const [contributionTypes, setContributionTypes] = useState<string[]>([]);
   const [description, setDescription] = useState("");
   
@@ -123,6 +124,7 @@ export default function SubmitPage() {
           discord_name: discordName,
           discord_username: discordUsername,
           x_handle: xHandle,
+          discord_level: discordLevel ? parseInt(discordLevel, 10) : null,
           contribution_types: contributionTypes,
           description: description,
           media_urls: uploadedUrls,
@@ -224,6 +226,17 @@ export default function SubmitPage() {
                       placeholder="e.g. @yourhandle"
                       value={xHandle}
                       onChange={(e) => setXHandle(e.target.value)}
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <label className="text-sm font-medium text-white/90">Concrete Discord Level</label>
+                    <input
+                      type="number"
+                      min="0"
+                      className="glass-input"
+                      placeholder="e.g. 5"
+                      value={discordLevel}
+                      onChange={(e) => setDiscordLevel(e.target.value)}
                     />
                   </div>
                   <div className="flex flex-col gap-2 md:col-span-2">
