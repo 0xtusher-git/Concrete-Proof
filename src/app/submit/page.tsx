@@ -124,7 +124,7 @@ export default function SubmitPage() {
           discord_name: discordName,
           discord_username: discordUsername,
           x_handle: xHandle,
-          discord_level: discordLevel ? parseInt(discordLevel, 10) : null,
+          // discord_level: discordLevel ? parseInt(discordLevel, 10) : null, // Temporarily disabled until Supabase schema cache catches up
           contribution_types: contributionTypes,
           description: description,
           media_urls: uploadedUrls,
